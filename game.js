@@ -17,7 +17,7 @@ let leavesCnt = document.querySelector('#leavesCount');
 let cobblestoneCnt = document.querySelector('#cobblestoneCount');
 
 startBtn.addEventListener('click', () => {
-    if (parseInt(sizeInput.value) >= 20) {
+    if (parseInt(sizeInput.value)) {
         gameSizeX = sizeInput.value; // the value that the user enter it and it will effect the number of coulmns 
         gameSizeY = 20; // i but it 20 
         CreateWorld(gameSizeX, gameSizeY); // call the function with 2 parameters 
@@ -68,8 +68,8 @@ function drawWorld() {
     for (let i = 0; i < gameSizeY; i++) {
         for (let j = 0; j < gameSizeX; j++) {
             let div = document.createElement('div'); // create new element  and style it 
-            div.style.gridRowStart = i + 1;
-            div.style.gridColumnStart = j + 1;
+            div.style.gridRowStart = i ;
+            div.style.gridColumnStart = j ;
             div.style.height = `5vh`;
             div.style.minWidth = `3vh`;
             div.style.backgroundRepeat = 'no-repeat';
@@ -187,7 +187,6 @@ function itemClick() {
     {
         dirtCounter--;
         dirtCnt.textContent = dirtCounter;
-        ;
         updateclass(this,'sky','dirt');
     }
     if( selectedElement.classList[1] == 'gress' && this.classList[1] == 'sky'  && gressCounter >= 1)
@@ -219,7 +218,7 @@ function itemClick() {
 
 
 }
-
+// array from[dirt , gress , axe , pickaxe...]
 clickables.forEach((element) => {
     element.addEventListener('click', () => {
         if (selectedElement) //if there is an old selected element, remove it
@@ -227,6 +226,7 @@ clickables.forEach((element) => {
         element.classList.add('selected'); // give the selected element the class on css it will cover the selected with border red 
         selectedElement = element;
         selectedTool = element.classList[1];
+        console.log(classList[1]);
         console.log(clickables)  
     })
 })
